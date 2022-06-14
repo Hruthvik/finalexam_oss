@@ -18,6 +18,7 @@ async def addbuyer(name):
         return {"result": "Duplicate entry"}
     else:
         buyers.append(name)
+        purchased.append({})
         return {"result": "OK"}
 
 @app1.post("/products")
@@ -40,9 +41,8 @@ async def listproducts():
 @app1.post("/buyers/{buyer_name}")
 async def sellproduct(buyer_name, prod_name):
     if buyer_name in buyers:
-        
+        n = buyers.index(buyer_name)
         if prod_name in products:
-            n = buyers.index(buyer_name)
             if prod_name in purchased[n]:
                 c = purchased[n][prod_name]
                 purchased[n][prod_name] = c+1;
@@ -60,7 +60,7 @@ async def sellproduct(buyer_name, prod_name):
 @app1.get("/buyers/{buyer_name}/purchased")
 async def purchasedItems(buyer_name):
     if buyer_name in purchased:
-        n = buyers.index[buyer_name]
+        n = buyers.index(buyers_name)
         return {f"{buyer_name}:": purchased[n]}
     else:
         msg = f"Error: no buyer {buyer_name}."
