@@ -40,8 +40,9 @@ async def listproducts():
 @app1.post("/buyers/{buyer_name}")
 async def sellproduct(buyer_name, prod_name):
     if buyer_name in buyers:
-        n = buyers.index(buyer_name)
+        
         if prod_name in products:
+            n = buyers.index(buyer_name)
             if prod_name in purchased[n]:
                 c = purchased[n][prod_name]
                 purchased[n][prod_name] = c+1;
