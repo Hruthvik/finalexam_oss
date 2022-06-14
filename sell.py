@@ -3,7 +3,6 @@ from fastapi import FastAPI
 app1 = FastAPI()
 
 
-buyer_name = ""
 buyers = []
 products = [] 
 purchased = []
