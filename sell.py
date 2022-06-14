@@ -60,7 +60,7 @@ async def sellproduct(buyer_name, prod_name):
 @app1.get("/buyers/{buyer_name}/purchased")
 async def purchasedItems(buyer_name):
     if buyer_name in purchased:
-        n = buyers.index(buyers_name)
+        n = buyers.index(buyer_name)
         return {f"{buyer_name}:": purchased[n]}
     else:
         msg = f"Error: no buyer {buyer_name}."
